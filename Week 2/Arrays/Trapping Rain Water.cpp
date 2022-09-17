@@ -1,21 +1,82 @@
 #include <bits/stdc++.h>
-  using namespace std;
+using namespace std;
   
   int main()
   {
+    //write your code here
+    
+    
+    
     int t;
     cin>>t;
+    
+    
     while(t--){
-      long long n;
-      cin>>n;
-      long long arr[n];
-      for(int i=0;i<n;i++){
-        cin>>arr[i];
-      }
-      int max1=0;
-      int max2=0;
       
+      int n;
+      cin>>n;
+    
+    int arr[n];
+    
+    for(int i=0;i<n;i++){
+      cin>>arr[i];
     }
+    
+    
+    int left[n];
+    int right[n];
+    
+    
+    int ans=  INT_MAX;
+    
+    int leftAns  = INT_MIN;
+    int rightAns = INT_MIN;
+    
+    
+    for(int i=0;i<n;i++){   
+        
+        if(arr[i] > leftAns){
+            leftAns = arr[i];    
+        }
+        
+       left[i] =leftAns;
+    }
+    
+    
+    
+    
+    
+    for(int i=n-1;i>=0;i--){   
+        
+        if(arr[i] > rightAns){
+            rightAns = arr[i];    
+        }
+    
+       right[i] = rightAns;
+    
+    }
+    
+    
+    int trap = 0;
+    
+    
+    for(int i=0;i<n;i++){   
+         
+         int minAns = min(left[i] , right[i]);
+         
+          trap+=(minAns - arr[i]);
+    }
+    
+  
+    cout<<trap<<endl;
+    
+    
+    
+    
+
+}
+
+    
     
     return 0;
   }
